@@ -10,6 +10,14 @@ const { title, description, path = '/', image = '/images/brand-child.jpeg', sche
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-49QXD570ZG"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-49QXD570ZG');
+    </script>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="generator" content={Astro.generator} />
     <SEO {title} {description} {path} {image} /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
