@@ -1,0 +1,4 @@
+---
+const { category, index = 0 } = Astro.props;
+---
+<a class={`category-card tone-${index % 4}`} href={`/shop/?category=${encodeURIComponent(category.slug)}`}><span class="category-icon" aria-hidden="true">{category.icon}</span><span><strong>{category.name}</strong><small>{category.note}</small></span><span aria-hidden="true">→</span></a>

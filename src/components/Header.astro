@@ -1,0 +1,5 @@
+---
+const path = Astro.url.pathname; const links = [['Home','/'],['Shop','/shop/'],['Categories','/categories/'],['About Us','/about/'],['Contact','/contact/']];
+---
+<div class="announcement">Thoughtfully made for little days · Ages 0–5</div>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="/" aria-label="Konarkini home"><span class="brand-mark">K</span><span>Konarkini<small>little clothes, big comfort</small></span></a><nav aria-label="Main navigation">{links.map(([label, href]) => <a href={href} class={path === href ? 'active' : ''}>{label}</a>)}</nav><a class="header-cta" href="/shop/">Explore shop</a></div></header>

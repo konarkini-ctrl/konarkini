@@ -1,0 +1,4 @@
+---
+import Layout from '../layouts/Layout.astro'; import Breadcrumb from '../components/Breadcrumb.astro'; import CategoryCard from '../components/CategoryCard.astro'; import { categories } from '../data/products';
+---
+<Layout title="Kids Clothing Categories | Konarkini" description="Explore newborn clothing, baby styles, toddler clothing, dresses, sets, tops and bottom wear for ages zero to five." path="/categories/"><div class="page-hero"><div class="container"><Breadcrumb items={[{label:'Home',href:'/'},{label:'Categories',href:'/categories/'}]} /><p class="eyebrow">Something for every stage</p><h1>Shop by category</h1><p>Find soft favourites by age, style, and the way they love to move.</p></div></div><section class="section"><div class="container category-grid category-page-grid">{categories.map((category,i)=><CategoryCard {category} index={i}/>)}</div></section></Layout>

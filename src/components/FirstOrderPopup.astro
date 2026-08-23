@@ -1,0 +1,39 @@
+<div class="offer-popup" data-offer-popup hidden>
+  <div class="offer-popup__backdrop" data-offer-close></div>
+  <section class="offer-popup__card" role="dialog" aria-modal="true" aria-labelledby="offer-title" aria-describedby="offer-copy">
+    <button class="offer-popup__close" type="button" aria-label="Close offer" data-offer-close>×</button>
+    <span class="offer-popup__sparkle" aria-hidden="true">✦</span>
+    <p class="eyebrow">A little welcome gift</p>
+    <h2 id="offer-title">Your First Order<br />Is FREE!</h2>
+    <p id="offer-copy">Begin their wardrobe with something soft, thoughtful, and on us.</p>
+    <a class="button offer-popup__cta" href="/shop/">Shop Now <span aria-hidden="true">→</span></a>
+    <small>Offer applies when ordering becomes available.</small>
+  </section>
+</div>
+<script>
+  const popup = document.querySelector<HTMLElement>('[data-offer-popup]');
+  if (popup) {
+    const storageKey = 'konarkini-welcome-offer-shown';
+    let hasBeenShown = false;
+    try { hasBeenShown = sessionStorage.getItem(storageKey) === 'true'; } catch {}
+
+    if (hasBeenShown) popup.remove();
+
+    if (!hasBeenShown) {
+    const closeButtons = popup.querySelectorAll<HTMLElement>('[data-offer-close]');
+    const closeButton = popup.querySelector<HTMLButtonElement>('.offer-popup__close');
+    let previouslyFocused: HTMLElement | null = null;
+    const closePopup = () => {
+      popup.classList.remove('is-visible');
+      window.setTimeout(() => { popup.hidden = true; document.body.classList.remove('popup-open'); previouslyFocused?.focus(); }, 250);
+    };
+    window.setTimeout(() => {
+      try { sessionStorage.setItem(storageKey, 'true'); } catch {}
+      previouslyFocused = document.activeElement as HTMLElement; popup.hidden = false; document.body.classList.add('popup-open');
+      requestAnimationFrame(() => { popup.classList.add('is-visible'); closeButton?.focus(); });
+    }, 2000);
+    closeButtons.forEach((button) => button.addEventListener('click', closePopup));
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && popup.classList.contains('is-visible')) closePopup(); });
+    }
+  }
+</script>
