@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://konarkini.example/sitemap.xml
+Sitemap: https://kornakini.com/sitemap.xml
