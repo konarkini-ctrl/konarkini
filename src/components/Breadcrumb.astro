@@ -1,4 +1,4 @@
 ---
-const { items } = Astro.props; const site = Astro.site ?? new URL('https://kornakini.com'); const schema = { '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement: items.map((item:any,i:number)=>({ '@type':'ListItem', position:i+1, name:item.label, item:new URL(item.href,site).href })) };
+const { items } = Astro.props; const site = Astro.site ?? new URL('https://konarkini.com'); const schema = { '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement: items.map((item:any,i:number)=>({ '@type':'ListItem', position:i+1, name:item.label, item:new URL(item.href,site).href })) };
 ---
 <nav class="breadcrumbs" aria-label="Breadcrumb"><ol>{items.map((item:any,i:number) => <li>{i < items.length - 1 ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}</li>)}</ol></nav><script type="application/ld+json" set:html={JSON.stringify(schema)} />
